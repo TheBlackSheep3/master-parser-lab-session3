@@ -1,8 +1,11 @@
 #include <cstdlib>
+#include <exception>
 #include <iostream>
+#include <ostream>
 
 #include "config.hpp"
 #include "parameters.hpp"
+#include "spl_generator.hpp"
 
 void print_help() {
   std::cout << "Usage: " << PROJECT_EXECUTABLE << " [options] [INPUT_FILE]\n";
@@ -28,6 +31,12 @@ int main(int argc, char const* argv[]) {
     print_version();
     return EXIT_SUCCESS;
   } else {
+    auto genertor = nd::spl::peg::get_spl_parser_generator();
+    try {
+      std::cout << genertor.run("x:=1") << std::endl;
+    } catch (std::exception& e) {
+      std::cerr << "Parsing error:\n" << e.what() << std::endl;
+    }
     return EXIT_SUCCESS;
   }
 }
