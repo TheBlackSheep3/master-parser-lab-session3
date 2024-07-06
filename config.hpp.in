@@ -1,2 +1,3 @@
 #define PROJECT_VERSION "@parser-lab3-sample-programming-language_VERSION@"
 #define PROJECT_EXECUTABLE "@EXECUTABLE_NAME@"
+#define HELP_HINT "See '@EXECUTABLE_NAME@ --help'.\n"
